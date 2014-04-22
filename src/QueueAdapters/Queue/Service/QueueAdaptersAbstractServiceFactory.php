@@ -4,7 +4,7 @@
  *
  * @link      https://github.com/joachimdo/zf2-queueing-factory-module 
  * @copyright Copyright (c) 2014 Joachim Dornbusch
- * @license   GNU GPL V3
+ * @license   GNU-GPL V3+
  */
 
 namespace QueueAdapters\Queue\Service;
