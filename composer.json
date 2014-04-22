@@ -1,6 +1,6 @@
 {
     "name": "jdornbusch/queue-adapters",
-    "description": "module that wraps the zend-queue library allowing access via the service manager",
+    "description": "Module that wraps the zend-queue library allowing access via the service manager",
     "license": "GPL-3.0+",
     "authors": [
         {
