@@ -1,0 +1,17 @@
+{
+    "name": "jdornbusch/queue-adapters",
+    "description": "module that wraps the zend-queue library allowing access via the service manager",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "joachimdo",
+            "email": "dornbusch@free.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+			"php": ">=5.3.3",
+        	"zendframework/zendframework": "2.3.*",
+          "zendframework/zend-queue" : "master"
+    }
+}
