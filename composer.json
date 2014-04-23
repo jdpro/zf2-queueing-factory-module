@@ -13,5 +13,13 @@
 			"php": ">=5.3.3",
         	"zendframework/zendframework": "2.3.*",
           "zendframework/zend-queue" : "master"
+    },
+    "autoload": {
+        "psr-0": {
+            "QueueAdapters": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
     }
 }
