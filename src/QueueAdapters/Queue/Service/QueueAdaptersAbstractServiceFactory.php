@@ -98,7 +98,7 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 			return $this->config;
 		}
 
-		$this->config = $config[$this->configKey];
+		$this->config = $config[self::configKey];
 		return $this->config;
 	}
 }
