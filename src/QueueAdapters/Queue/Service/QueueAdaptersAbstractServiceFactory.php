@@ -2,7 +2,7 @@
 /**
  * Queue Adapter Module for Zend Framework
  *
- * @link      https://github.com/joachimdo/zf2-queueing-factory-module 
+ * @link      https://github.com/joachimdo/zf2-queueing-factory-module
  * @copyright Copyright (c) 2014 Joachim Dornbusch
  * @license   GNU-GPL V3+
  */
@@ -11,7 +11,6 @@ namespace QueueAdapters\Queue\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use ZendQueue\Adapter\Activemq;
 use ZendQueue\Queue;
 
 /**
@@ -36,7 +35,9 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 	 *
 	 * @var array
 	 */
-	protected static $adapterTypes = array("activemq");
+	protected static $invokableClasses = array(
+			'activemq' => 'ZendQueue\Adapter\Activemq'
+	);
 
 
 	/**
@@ -47,7 +48,7 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 	*/
 	public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
 	{
-		return (in_array($requestedName, self::$adapterTypes));
+		return (array_key_exists($requestedName, self::$invokableClasses));
 	}
 
 	/**
@@ -60,19 +61,16 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 	{
 		$config = $this->getConfig($services);
 		$queue=null;
-		switch ($requestedName) {
-			case 'activemq':
-				if(!array_key_exists('activemq', $config))
-					$config=array();
-				else $config = $config['activemq'];
-				$adapter = new Activemq( $config );
-				$queue = new Queue( $adapter );
-				break;
-			default:
-				throw new \Exception("$requestedName implementation of queues is not supported");
-				break;
+		if($this->canCreateServiceWithName($services, $name, $requestedName)) {
+			if(!array_key_exists($requestedName, $config))
+				$config=array();
+			else $config = $config[$requestedName];
+			$adapter = new self::$invokableClasses[$requestedName]( $config );
+			$queue = new Queue( $adapter );
+			return $queue;
 		}
-		return $queue;
+		throw new \Exception("$requestedName implementation of queues is not supported");
+
 	}
 
 	/**
