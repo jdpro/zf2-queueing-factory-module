@@ -28,7 +28,7 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 	 *
 	 * @var string
 	 */
-	protected static $configKey = 'queue-adapters';
+	public static $configKey = 'queue-adapters';
 
 	/**
 	 * List of supported implementations
@@ -96,7 +96,7 @@ class QueueAdaptersAbstractServiceFactory implements AbstractFactoryInterface
 			return $this->config;
 		}
 
-		$this->config = $config[self::configKey];
+		$this->config = $config[self::$configKey];
 		return $this->config;
 	}
 }

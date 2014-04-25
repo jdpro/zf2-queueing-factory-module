@@ -1,10 +1,13 @@
 <?php
 return array (
 		"queue-adapters" => array(
+				//inform the controller plugin, 
+				// "default" =>"activemq",
 				"activemq" => array (
 						//	"host" => "127.0.0.1",
 						//	"port" => "61613",
-						// "scheme" => "tcp"
+						// "scheme" => "tcp",
+						
 				)
 		)
 
