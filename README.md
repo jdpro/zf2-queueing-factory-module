@@ -1,7 +1,7 @@
 zf2-queueing-factory-module
 ===========================
-> This module only provides an abstract factory in order to give access to the queueing functionalities via zend framework 2 service manager.
-> For now, it is limited to activemq.
+> This module only provides an factories in order to give access to the queueing functionalities via zend framework 2 service manager.
+> For now, it is limited to Activemq.
 
 ## Installation
 
@@ -20,7 +20,8 @@ return array (
 				)
 		)
 
-);```
+);
+```
 
 
 ## Usage
