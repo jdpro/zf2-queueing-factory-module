@@ -38,7 +38,7 @@ $iterator=$service->receive();
 $current=$iterator->current();
 ```
 
-* or as a plugin manager if you wand to access it from a Controller
+* or as a plugin manager if you want to access it from a Controller
 
 ```php
 //write to queue
