@@ -1,11 +1,11 @@
 zf2-queueing-factory-module
 ===========================
-> This module only provides an factories in order to give access to the queueing functionalities via zend framework 2 service manager.
+> This module only provides factories to give access to the queueing functionalities via Zend Service Manager.
 > For now, it is limited to Activemq.
 
 ## Installation
 
-Just add QueueAdapters to the listed module names, rename and copy the module.queue-adapters.local.php.dist to your application config, e.g. :
+Just add QueueAdapters to the listed module names, rename and copy the module.queue-adapters.local.php.dist to your application config autoload directory and fill it, e.g. :
 
 ```php
 return array (
@@ -22,8 +22,6 @@ return array (
 
 );
 ```
-
-
 ## Usage
 
 An instance of ZendQueue\Queue with the ActivMQ adapter is now available :
@@ -40,7 +38,7 @@ $iterator=$service->receive();
 $current=$iterator->current();
 ```
 
-* or as a plugin manager if you are in a Controller
+* or as a plugin manager if you wand to access it from a Controller
 
 ```php
 //write to queue
