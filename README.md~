@@ -13,8 +13,8 @@ return array (
 				//inform the controller plugin, 
 				// "default" =>"activemq",
 				"activemq" => array (
-						//"host" => "127.0.0.1",
-						//"port" => "61613",
+						//	"host" => "127.0.0.1",
+						//	"port" => "61613",
 						// "scheme" => "tcp",
 						
 				)
@@ -39,14 +39,15 @@ $iterator=$service->receive();
 $current=$iterator->current();
 ```
 
-* or as a plugin manager if you are in a Controller
+* or as a plugin manager
 
 ```php
+$service = $this->getServiceLocator()->get("activemq");
 //write to queue
-$this->queue()->createQueue("test");
-$this->queue()->send("Hello World n°1");
+$service->createQueue("test");
+$service->send("Hello World n°1");
 //read from queue
-$iterator=$this->queue()->receive();
+$iterator=$service->receive();
 $current=$iterator->current();
 ```
 
